@@ -1,1 +1,1 @@
-# CI-CD_Project
+This Project will deal with Github, AWS, and jenkins intergration
