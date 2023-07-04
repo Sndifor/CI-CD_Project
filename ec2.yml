@@ -1,19 +1,16 @@
----
+AWSTemplateFormatVersion: 2010-09-09
 Resources:
   MyInstance:
-    Type: AWS::EC2::Instance
+    Type: 'AWS::EC2::Instance'
     Properties:
       ImageId: ami-06b09bfacae1453cb
       InstanceType: t2.micro
       SecurityGroups:
-        - SSHSecurityGroup
-        - ServerSecurityGroup
-  MyEIP:
-    Type: AWS::EC2::EIP
-    Properties:
-      InstanceId: MyInstance
+        - !Ref SSHSecurityGroup
+        - !Ref ServerSecurityGroup
+
   SSHSecurityGroup:
-    Type: AWS::EC2::SecurityGroup
+    Type: 'AWS::EC2::SecurityGroup'
     Properties:
       GroupDescription: Enable SSH access via port 22
       SecurityGroupIngress:
@@ -21,8 +18,9 @@ Resources:
           FromPort: 22
           IpProtocol: tcp
           ToPort: 22
+          
   ServerSecurityGroup:
-    Type: AWS::EC2::SecurityGroup
+    Type: 'AWS::EC2::SecurityGroup'
     Properties:
       GroupDescription: allow connections from specified CIDR ranges
       SecurityGroupIngress:
