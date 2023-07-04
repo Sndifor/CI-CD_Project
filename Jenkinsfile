@@ -7,7 +7,7 @@ pipeline {
     stages {
         stage('Submit Stack') {
             steps {
-                sh "aws cloudformation create-stack --stack-name testecinstance --template-body file://ec2.yml --tags Key=Name,Value=FirstTestInstance --region 'us-east-1'"
+                sh "aws cloudformation create-stack --stack-name testecinstance --template-body file://ec2.yml --region 'us-east-1'"
             }
         }
     }
