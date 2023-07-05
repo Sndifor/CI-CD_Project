@@ -7,7 +7,7 @@ pipeline {
     stages {
         stage('Submit Stack') {
             steps {
-                withAWS (crendentials: 'Jenkins_AWSID' , region: 'us-west-1') 
+                withAWS (credentials: 'Jenkins_AWSID' , region: 'us-west-1') 
                 sh "aws cloudformation create-stack --stack-name $STACK_NAME -t file://ec2.yml --region 'us-east-1'"
             }
         }
