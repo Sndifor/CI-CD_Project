@@ -13,7 +13,7 @@ pipeline {
                 
             }
         }
-        stage stage('Submit Stack') {
+        stage('Submit Stack') {
             environment {
                 STACK_NAME = 'DemoStack5'
             }
