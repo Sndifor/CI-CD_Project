@@ -1,14 +1,22 @@
 AWSTemplateFormatVersion: 2010-09-09
+
+
 Resources:
   MyInstance:
     Type: 'AWS::EC2::Instance'
     Properties:
       ImageId: ami-06b09bfacae1453cb
       InstanceType: t2.micro
+      Tags:
+        - Key: Name
+          Value: Demo Server
       SecurityGroups:
         - !Ref SSHSecurityGroup
         - !Ref ServerSecurityGroup
 
+    DependsOn:
+      - ServerSecurityGroup
+      - SSHSecurityGroup
   SSHSecurityGroup:
     Type: 'AWS::EC2::SecurityGroup'
     Properties:
@@ -18,7 +26,7 @@ Resources:
           FromPort: 22
           IpProtocol: tcp
           ToPort: 22
-          
+
   ServerSecurityGroup:
     Type: 'AWS::EC2::SecurityGroup'
     Properties:
