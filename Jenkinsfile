@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Submit Stack') {
             environment {
-                STACK_NAME = 'DemoStack5'
+                STACK_NAME = 'DemoStack6'
             }
             steps {
                 withAWS (credentials: 'Jenkins_AWSID' , region: 'us-west-1') {
