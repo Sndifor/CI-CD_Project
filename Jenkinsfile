@@ -7,7 +7,7 @@ pipeline {
                 STACK_NAME = 'DemoStack3'
             }
             steps {
-                withAWS (credentials: 'Jenkins_AWSID' , region: 'us-west-1') {
+                withAWS (credentials: 'Jenkins_AWSID' , region: 'us-east-1') {
                     sh "aws cloudformation create-stack --stack-name $STACK_NAME --template-body file://ec2.yml"
                 }
                 
@@ -18,7 +18,7 @@ pipeline {
                 STACK_NAME = 'DemoStack4'
             }
             steps {
-                withAWS (credentials: 'Jenkins_AWSID' , region: 'us-west-1') {
+                withAWS (credentials: 'Jenkins_AWSID' , region: 'us-east-2') {
                     sh "aws cloudformation create-stack --stack-name $STACK_NAME --template-body file://ec2.yml"
                 }
                 
