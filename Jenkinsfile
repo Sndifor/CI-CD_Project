@@ -1,11 +1,11 @@
 pipeline {
     agent any
-    
+parameters {
+            credentials credentialType: 'com.cloudbees.jenkins.plugins.awscredentials.AWSCredentialsImpl', defaultValue: '', description: 'Which Credential would you want to use for this region', name: 'AWSID', required: true
+}
     stages {
         stage('Submit Stack') {
-        parameters {
-            credentials credentialType: 'com.cloudbees.jenkins.plugins.awscredentials.AWSCredentialsImpl', defaultValue: '', description: 'Which Credential would you want to use for this region', name: 'AWSID', required: true
-        }
+       
             environment {
                 STACK_NAME = 'DemoStack3'
             }
@@ -13,6 +13,7 @@ pipeline {
                 sh "aws cloudformation create-stack --stack-name $STACK_NAME --template-body file://ec2.yml"
             }
         }
+
         stage('Submit Stack1') {
             environment {
                 STACK_NAME = 'DemoStack4'
